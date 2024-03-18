@@ -4,6 +4,7 @@ import MainMenu from './pages/screen2/MainMenu';
 import AdditionalMenu from './pages/screen3/AdditionalMenu' ;
 import Payment from './pages/screen4/Payment';
 import Settlement from './pages/screen5/Settlement';
+import Finish from './pages/screen6/Finish';
 
 function App() {
   return (
@@ -11,6 +12,11 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route index element={<Home/>}/>
+          <Route path='/menu' element={<MainMenu/>}/>
+          <Route path='/additional' element={<AdditionalMenu/>}/>
+          <Route path='/payment' element={<Payment/>}/>
+          <Route path='/settlement' element={<Settlement/>}/>
+          <Route path='/goodbye' element={<Finish/>}/>
         </Routes>
       </BrowserRouter>
     </div>
