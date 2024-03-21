@@ -1,0 +1,15 @@
+.MenuItem {
+    height: 10px;
+    display: inline-block;
+    margin: 15px;
+}
+
+.ImgItem {
+    width: 100px;
+    height: 70px;
+    margin: 50px;
+}
+
+.TextItem {
+    text-align: center;
+}

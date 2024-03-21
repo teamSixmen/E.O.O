@@ -1,36 +1,43 @@
 import { useEffect, useState } from 'react';
-import {Link, NavLink, Navigate} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function Header(){
 
     const [isTrue,setIsTrue] = useState(false);
 
-    const orderStyle = {
-        backgroundColor: 'orange',
+    const gotoStyle = {
+        display:'inline-block',
+        backgroundColor: !isTrue?'orange':'white',
+        cursor:'pointer'
+    };
+
+    const intoStyle = {
+        display:'inline-block',
+        backgroundColor: isTrue?'orange':'white',
+        cursor:'pointer'
     };
 
     const onClickGotoHanler = () =>{
         setIsTrue(false);
     }
-
+    
     const onClickIntoHanler = () =>{
         setIsTrue(true);
     }
     
     useEffect(()=>{
         console.log(isTrue);
-        <Navigate to={`/menu/${isTrue}`}/>
     },[isTrue]);
 
     return(
         <>
             <div style={{textAlign:'end',borderBottom:'1px solid'}}>
-                <button style={{margin:'5px',display:'inline-block',textDecorationLine:'none'}}>
-                    <NavLink onClick={onClickGotoHanler} to={`menu/${isTrue}`} style={({isActive})=>isActive? orderStyle:undefined}>포장</NavLink>
+                <button onClick={onClickGotoHanler} style={gotoStyle}>
+                    포장
                 </button>
                 &nbsp;
-                <button style={{display:'inline-block',textDecorationLine:'none'}}>
-                    <NavLink onClick={onClickIntoHanler} to={`menu/${!isTrue}`} style={({isActive})=>isActive? orderStyle:undefined}>매장</NavLink>
+                <button onClick={onClickIntoHanler} style={intoStyle}>
+                    매장
                 </button>
                 &nbsp;
                 <button style={{display:'inline-block',textDecorationLine:'none'}}>

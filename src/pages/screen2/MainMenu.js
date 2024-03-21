@@ -1,12 +1,26 @@
 import { useEffect, useState } from 'react';
-import {Link} from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
+
 import { getSingleMenu } from '../../apis/menuAPI';
 import { getSetMenu } from '../../apis/menuAPI';
 import { getChickenMenu } from '../../apis/menuAPI';
 import { getSideMenu } from '../../apis/menuAPI';
 import { getDrinkMenu } from '../../apis/menuAPI';
 
+import SelectedMenu from './SelectedMenu';
+
+import MenuInfo from './MenuInfo';
+
+
 function MainMenu(){
+
+    const tapStyle = {
+        margin: '3px',
+        display:'inline-block',
+        cursor:'pointer'
+    };
+
+    const [category,setcategory] = useState(1);
 
     const [singleMenu,setSingleMenu] = useState([]);
     const [setMenu ,setSetMenu] = useState([]);
@@ -14,39 +28,51 @@ function MainMenu(){
     const [sideMenu,setSideMenu] = useState([]);
     const [drinkMenu,setDrinkMenu] = useState([]);
 
-    useEffect(()=>{
-        setSingleMenu(getSingleMenu());
-    },[singleMenu]);
+    const onClickMenuHandler = (menu)=>{
+        
+    }
 
     useEffect(()=>{
-        setSetMenu(getSetMenu());
-    },[setMenu]);
+        if     (category === 1) setSingleMenu(getSingleMenu());
+        else if(category === 2) setSetMenu(getSetMenu());
+        else if(category === 3) setChickenMenu(getChickenMenu());
+        else if(category === 4) setSideMenu(getSideMenu());
+        else if(category === 5) setDrinkMenu(getDrinkMenu());
+    },[category]);
 
-    useEffect(()=>{
-        setChickenMenu(getChickenMenu());
-    },[chickenMenu]);
-
-    useEffect(()=>{
-        setSideMenu(getSideMenu());
-    },[sideMenu]);
-
-    useEffect(()=>{
-        setDrinkMenu(getDrinkMenu());
-    },[drinkMenu]);
+    const onClickSingleHandler= ()=>{
+        setcategory(1);
+    }
+    const onClickSetHandler= ()=>{
+        setcategory(2);
+    }
+    const onClickChickenHandler= ()=>{
+        setcategory(3);
+    }
+    const onClickSideHandler= ()=>{
+        setcategory(4);
+    }
+    const onClickDrinkHandler= ()=>{
+        setcategory(5);
+    }
 
     return(
         <>
-            <div style={{height:'400px'}}>
-                <div style={{borderBottom:'1px solid'}}>
-                    <div style={{textAlign:'center',lineHeight:'100px',height:'100px'}}>
-                        선택한 메뉴
-                    </div>
-                    <div style={{textAlign:'end',lineHeight:'30px'}}>
-                        <Link to="/payment">주문하기</Link>
-                    </div>
-                </div>
-                <div style={{textAlign:'center',lineHeight:'200px'}}>
-                    <Link to="/additional">메뉴 클릭!</Link>
+            <div>
+                <Outlet/>
+
+                <button onClick={onClickSingleHandler} style={tapStyle}>단품</button>
+                <button onClick={onClickSetHandler} style={tapStyle}>세트</button>
+                <button onClick={onClickChickenHandler} style={tapStyle}>치킨</button>
+                <button onClick={onClickSideHandler} style={tapStyle}>사이드</button>
+                <button onClick={onClickDrinkHandler} style={tapStyle}>음료</button>
+
+                <div onClick={onClickMenuHandler} style={{backgroundColor:'blue',float:'right',width:'700px'}}>
+                    {category === 1 && singleMenu.map((menu)=><MenuInfo key={menu.menuCode} menu={menu}/>)}
+                    {category === 2 && setMenu.map((menu)=><MenuInfo key={menu.menuCode} menu={menu}/>)}
+                    {category === 3 && chickenMenu.map((menu)=><MenuInfo key={menu.menuCode} menu={menu}/>)}
+                    {category === 4 && sideMenu.map((menu)=><MenuInfo key={menu.menuCode} menu={menu}/>)}
+                    {category === 5 && drinkMenu.map((menu)=><MenuInfo key={menu.menuCode} menu={menu}/>)}
                 </div>
             </div>
         </>

@@ -19,3 +19,7 @@ export function getSideMenu(){
 export function getDrinkMenu(){
     return drinkMenu;
 }
+
+export function getSelectedMenu(menuCode){
+    
+}
