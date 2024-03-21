@@ -1,4 +1,5 @@
 import {BrowserRouter,Routes,Route} from 'react-router-dom';
+import { useState } from 'react';
 import Home from './pages/screen1/Home';
 import MainMenu from './pages/screen2/MainMenu';
 import AdditionalMenu from './pages/screen3/AdditionalMenu' ;
@@ -14,14 +15,20 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route index element={<Home/>}/>
+
           <Route path='/' element={<Layout/>}>
-            <Route path='home' element={<Home/>}/>
-            <Route path='menu' element={<MainMenu/>}/>
-            <Route path='additional' element={<AdditionalMenu/>}/>
-            <Route path='payment' element={<Payment/>}/>
-            <Route path='settlement' element={<Settlement/>}/>
-          <Route path='goodbye' element={<Finish/>}/>
+            <Route path='menu' element={<MainMenu/>}>
+              <Route path=':isTrue' element={<MainMenu/>}>
+                <Route path='additional' element={<AdditionalMenu/>}/>
+                <Route path='payment' element={<Payment/>}/>
+                <Route path='settlement' element={<Settlement/>}/>
+                <Route path='goodbye' element={<Finish/>}/>
+
+              </Route>
+            </Route>
+
           </Route>
+
         </Routes>
       </BrowserRouter>
     </div>
