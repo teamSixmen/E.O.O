@@ -5,11 +5,9 @@ import Footer from '../../components/Footer';
 function Finish(){
     return(
         <>
-            <Header/>
             <div style={{textAlign:'center',lineHeight:'450px',height:'450px'}}>
                 <Link to="../">주문완료</Link>
             </div>
-            <Footer/>
         </>
     );
 }

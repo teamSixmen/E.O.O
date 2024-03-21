@@ -5,7 +5,6 @@ import Footer from '../../components/Footer';
 function AdditionalMenu(){
     return(
         <>
-            <Header/>
             <div style={{textAlign:'center',lineHeight:'400px',height:'400px',border:'1px solid'}}>
                 대충 메뉴
             </div>

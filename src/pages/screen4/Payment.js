@@ -5,7 +5,6 @@ import Footer from '../../components/Footer';
 function Payment(){
     return(
         <>
-            <Header/>
             <div style={{textAlign:'center',lineHeight:'200px',height:'200px',border:'1px solid'}}>
                 대충 주문 내역
             </div>
@@ -17,7 +16,6 @@ function Payment(){
                 <Link to="../settlement">결제하기</Link> | {" "}
                 <Link to="../menu">취소</Link>
             </div>
-            <Footer/>
         </>
     );
 }

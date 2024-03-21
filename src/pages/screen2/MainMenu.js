@@ -9,7 +9,6 @@ import Drink from "./Drink";
 function MainMenu(){
     return(
         <>
-            <Header/>
             <div style={{height:'400px'}}>
                 <div style={{borderBottom:'1px solid'}}>
                     <div style={{textAlign:'center',lineHeight:'100px',height:'100px'}}>
@@ -23,7 +22,6 @@ function MainMenu(){
                     <Link to="../additional">메뉴 클릭!</Link>
                 </div>
             </div>
-            <Footer/>
         </>
     );
 }

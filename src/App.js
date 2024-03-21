@@ -9,19 +9,18 @@ import Layout from './layouts/Layout';
 
 function App() {
 
-  
-
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route index element={<Layout/>}>
-            <Route path='/' element={<Home/>}/>
-            <Route path='/menu' element={<MainMenu/>}/>
-            <Route path='/additional' element={<AdditionalMenu/>}/>
-            <Route path='/payment' element={<Payment/>}/>
-            <Route path='/settlement' element={<Settlement/>}/>
-            <Route path='/goodbye' element={<Finish/>}/>
+          <Route index element={<Home/>}/>
+          <Route path='/' element={<Layout/>}>
+            <Route path='home' element={<Home/>}/>
+            <Route path='menu' element={<MainMenu/>}/>
+            <Route path='additional' element={<AdditionalMenu/>}/>
+            <Route path='payment' element={<Payment/>}/>
+            <Route path='settlement' element={<Settlement/>}/>
+          <Route path='goodbye' element={<Finish/>}/>
           </Route>
         </Routes>
       </BrowserRouter>
