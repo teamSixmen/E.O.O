@@ -30,6 +30,8 @@ function MainMenu(){
 
     const [selected,setSelected] = useState([]);
 
+    const [totalPrice,setTotalPrice] = useState(0);
+
     useEffect(()=>{
         if     (category === 1) setSingleMenu(getSingleMenu());
         else if(category === 2) setSetMenu(getSetMenu());
@@ -38,20 +40,12 @@ function MainMenu(){
         else if(category === 5) setDrinkMenu(getDrinkMenu());
     },[category]);
 
-    const onClickSingleHandler= ()=>{
-        setcategory(1);
-    }
-    const onClickSetHandler= ()=>{
-        setcategory(2);
-    }
-    const onClickChickenHandler= ()=>{
-        setcategory(3);
-    }
-    const onClickSideHandler= ()=>{
-        setcategory(4);
-    }
-    const onClickDrinkHandler= ()=>{
-        setcategory(5);
+    const onClickHandler= (e)=>{
+        if( e.target.name === 'single' ) setcategory(1);
+        else if( e.target.name === 'set' ) setcategory(2);
+        else if( e.target.name === 'chicken' ) setcategory(3);
+        else if( e.target.name === 'side' ) setcategory(4);
+        else if( e.target.name === 'drink' ) setcategory(5);
     }
 
     return(
@@ -59,25 +53,26 @@ function MainMenu(){
             <div>
                 <div style={{borderBottom:'1px solid'}}>
                     <div>
-                        {selected.map((menu)=><SelectedMenu key={menu.menuCode} menu={menu} selected={selected} setSelected={setSelected}/>)}
+                        {selected.map((menu)=><SelectedMenu key={menu.menuCode} menu={menu} selected={selected} setSelected={setSelected} totalPrice={totalPrice} setTotalPrice={setTotalPrice}/>)}
                     </div>
                     <div style={{textAlign:'end',lineHeight:'30px'}}>
+                        {totalPrice}
                         <Link to="/payment">주문하기</Link>
                     </div>
                 </div>
 
-                <button onClick={onClickSingleHandler} style={tapStyle}>단품</button>
-                <button onClick={onClickSetHandler} style={tapStyle}>세트</button>
-                <button onClick={onClickChickenHandler} style={tapStyle}>치킨</button>
-                <button onClick={onClickSideHandler} style={tapStyle}>사이드</button>
-                <button onClick={onClickDrinkHandler} style={tapStyle}>음료</button>
+                <button name="single" onClick={onClickHandler} style={tapStyle}>단품</button>
+                <button name="set" onClick={onClickHandler} style={tapStyle}>세트</button>
+                <button name="chicken" onClick={onClickHandler} style={tapStyle}>치킨</button>
+                <button name="side" onClick={onClickHandler} style={tapStyle}>사이드</button>
+                <button name="drink" onClick={onClickHandler} style={tapStyle}>음료</button>
 
                 <div style={{backgroundColor:'blue',float:'right',width:'700px'}}>
-                    {category === 1 && singleMenu.map((menu)=><MenuInfo key={menu.menuCode} menu={menu} selected={selected} setSelected={setSelected}/>)}
-                    {category === 2 && setMenu.map((menu)=><MenuInfo key={menu.menuCode} menu={menu} selected={selected} setSelected={setSelected}/>)}
-                    {category === 3 && chickenMenu.map((menu)=><MenuInfo key={menu.menuCode} menu={menu} selected={selected} setSelected={setSelected}/>)}
-                    {category === 4 && sideMenu.map((menu)=><MenuInfo key={menu.menuCode} menu={menu} selected={selected} setSelected={setSelected}/>)}
-                    {category === 5 && drinkMenu.map((menu)=><MenuInfo key={menu.menuCode} menu={menu} selected={selected} setSelected={setSelected}/>)}
+                    {category === 1 && singleMenu.map((menu)=><MenuInfo key={menu.menuCode} menu={menu} selected={selected} setSelected={setSelected} totalPrice={totalPrice} setTotalPrice={setTotalPrice}/>)}
+                    {category === 2 && setMenu.map((menu)=><MenuInfo key={menu.menuCode} menu={menu} selected={selected} setSelected={setSelected} totalPrice={totalPrice} setTotalPrice={setTotalPrice}/>)}
+                    {category === 3 && chickenMenu.map((menu)=><MenuInfo key={menu.menuCode} menu={menu} selected={selected} setSelected={setSelected} totalPrice={totalPrice} setTotalPrice={setTotalPrice}/>)}
+                    {category === 4 && sideMenu.map((menu)=><MenuInfo key={menu.menuCode} menu={menu} selected={selected} setSelected={setSelected} totalPrice={totalPrice} setTotalPrice={setTotalPrice}/>)}
+                    {category === 5 && drinkMenu.map((menu)=><MenuInfo key={menu.menuCode} menu={menu} selected={selected} setSelected={setSelected} totalPrice={totalPrice} setTotalPrice={setTotalPrice}/>)}
                 </div>
             </div>
         </>

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import itemStyle from './MenuItem.module.css';
 
-function MenuInfo({menu,selected,setSelected}){
+function MenuInfo({menu,selected,setSelected,totalPrice,setTotalPrice}){
 
     const onClickHandler = () => {
         if(!selected.some(item => item.menuCode === menu.menuCode)) {
@@ -12,7 +12,8 @@ function MenuInfo({menu,selected,setSelected}){
                 image: menu.detail.image
             });
             setSelected(selectedMenu);
-        }
+            setTotalPrice(totalPrice+menu.price);
+        } 
     }
 
     return(

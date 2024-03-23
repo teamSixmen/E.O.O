@@ -1,39 +1,41 @@
 import { Link, useParams } from 'react-router-dom';
 import itemStyle from './MenuItem.module.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-function SelectedMenu({menu, selected, setSelected}){
+function SelectedMenu({menu, selected, setSelected, totalPrice, setTotalPrice}){
 
     const [quantity,setQuantity] = useState(1);
 
-    const onClickHandler = ()=>{
-        //remove
-    }
-    const onClickPlusHandler = ()=>{
+    const onClickPlus = ()=>{
         setQuantity(quantity+1);
-        console.log(quantity);
+        setTotalPrice(totalPrice+menu.price);
     }
-    const onClickMinusHandler = ()=>{
+    const onClickMinus = ()=>{
         if(quantity > 1){
             setQuantity(quantity-1);
-        } else {
-            onRemove(menu.menuCode);
+            setTotalPrice(totalPrice-menu.price);
         }
     }
-
+    const onClickRemove = ()=>{
+        onRemove(menu.menuCode);
+        setTotalPrice(totalPrice-(menu.price*quantity));
+    }
+    
     const onRemove = menuCode => {
-        const changedSelected = selected.filter(menu => menu.menuCode !== menuCode);
+        const changedSelected = selected.filter(item => item.menuCode !== menuCode);
         setSelected(changedSelected);
     }
 
     return(
-        <div className={ itemStyle.MenuItem } onClick={onClickHandler}>
+        <div className={ itemStyle.MenuItem }>
             <img className={ itemStyle.ImgItem } src={menu.image}/>
             <h3 className={ itemStyle.TextItem }>{menu.menuName}</h3>
-            <button onClick={onClickPlusHandler}>+</button>
+            <button onClick={onClickPlus}>+</button>
             {quantity}
-            <button onClick={onClickMinusHandler}>-</button>
-            <h3 className={ itemStyle.TextItem }>{menu.price}</h3>
+            <button onClick={onClickMinus}>-</button>
+            <button onClick={onClickRemove} style={{backgroundColor:'red',borderRadius:'15px',border:'10px'}}>x</button>
+            <h3 className={ itemStyle.TextItem }>{menu.price*quantity}</h3>
+            <h1></h1>
         </div>
     );
 }
