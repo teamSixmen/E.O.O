@@ -28,9 +28,7 @@ function MainMenu(){
     const [sideMenu,setSideMenu] = useState([]);
     const [drinkMenu,setDrinkMenu] = useState([]);
 
-    const onClickMenuHandler = (menu)=>{
-        
-    }
+    const [selected,setSelected] = useState([]);
 
     useEffect(()=>{
         if     (category === 1) setSingleMenu(getSingleMenu());
@@ -59,7 +57,14 @@ function MainMenu(){
     return(
         <>
             <div>
-                <Outlet/>
+                <div style={{borderBottom:'1px solid'}}>
+                    <div>
+                        {selected.map((menu)=><SelectedMenu key={menu.menuCode} menu={menu} selected={selected} setSelected={setSelected}/>)}
+                    </div>
+                    <div style={{textAlign:'end',lineHeight:'30px'}}>
+                        <Link to="/payment">주문하기</Link>
+                    </div>
+                </div>
 
                 <button onClick={onClickSingleHandler} style={tapStyle}>단품</button>
                 <button onClick={onClickSetHandler} style={tapStyle}>세트</button>
@@ -67,12 +72,12 @@ function MainMenu(){
                 <button onClick={onClickSideHandler} style={tapStyle}>사이드</button>
                 <button onClick={onClickDrinkHandler} style={tapStyle}>음료</button>
 
-                <div onClick={onClickMenuHandler} style={{backgroundColor:'blue',float:'right',width:'700px'}}>
-                    {category === 1 && singleMenu.map((menu)=><MenuInfo key={menu.menuCode} menu={menu}/>)}
-                    {category === 2 && setMenu.map((menu)=><MenuInfo key={menu.menuCode} menu={menu}/>)}
-                    {category === 3 && chickenMenu.map((menu)=><MenuInfo key={menu.menuCode} menu={menu}/>)}
-                    {category === 4 && sideMenu.map((menu)=><MenuInfo key={menu.menuCode} menu={menu}/>)}
-                    {category === 5 && drinkMenu.map((menu)=><MenuInfo key={menu.menuCode} menu={menu}/>)}
+                <div style={{backgroundColor:'blue',float:'right',width:'700px'}}>
+                    {category === 1 && singleMenu.map((menu)=><MenuInfo key={menu.menuCode} menu={menu} selected={selected} setSelected={setSelected}/>)}
+                    {category === 2 && setMenu.map((menu)=><MenuInfo key={menu.menuCode} menu={menu} selected={selected} setSelected={setSelected}/>)}
+                    {category === 3 && chickenMenu.map((menu)=><MenuInfo key={menu.menuCode} menu={menu} selected={selected} setSelected={setSelected}/>)}
+                    {category === 4 && sideMenu.map((menu)=><MenuInfo key={menu.menuCode} menu={menu} selected={selected} setSelected={setSelected}/>)}
+                    {category === 5 && drinkMenu.map((menu)=><MenuInfo key={menu.menuCode} menu={menu} selected={selected} setSelected={setSelected}/>)}
                 </div>
             </div>
         </>

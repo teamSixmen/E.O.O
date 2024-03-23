@@ -89,7 +89,7 @@
         }
     },
     { 
-        "menuCode" : "9",
+        "menuCode" : 9,
         "menuName" : "통새우 버거",
         "categoryName" : "버거",
         "isOrderable" : true,
@@ -100,7 +100,7 @@
         }
     },
     { 
-        "menuCode" : "10",
+        "menuCode" : 10,
         "menuName" : "할라피뇨 통살버거",
         "categoryName" : "버거",
         "isOrderable" : true,

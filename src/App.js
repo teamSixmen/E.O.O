@@ -17,9 +17,7 @@ function App() {
           <Route index element={<Home/>}/>
 
           <Route path='/' element={<Layout/>}>
-            <Route path='menu' element={<MainMenu/>}>
-              <Route path=':menuCode' element={<SelectedMenu/>}/>
-            </Route>
+            <Route path='menu' element={<MainMenu/>}/>
 
             <Route path='additional' element={<AdditionalMenu/>}/>
             <Route path='payment' element={<Payment/>}/>

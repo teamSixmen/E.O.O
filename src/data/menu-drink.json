@@ -1,6 +1,6 @@
 [
     { 
-        "menuCode" : 1,
+        "menuCode" : 41,
         "menuName" : "콜라",
         "categoryName" : "drink",
         "isOrderable" : true,
@@ -12,7 +12,7 @@
     },
     
     { 
-        "menuCode" : 2,
+        "menuCode" : 42,
         "menuName" : "제로콜라",
         "categoryName" : "drink",
         "isOrderable" : true,
@@ -24,7 +24,7 @@
     },
     
     { 
-        "menuCode" : 3,
+        "menuCode" : 43,
         "menuName" : "미린다",
         "categoryName" : "drink",
         "isOrderable" : true,
@@ -36,7 +36,7 @@
     },
     
     { 
-        "menuCode" : 4,
+        "menuCode" : 44,
         "menuName" : "사이다",
         "categoryName" : "drink",
         "isOrderable" : true,
@@ -48,7 +48,7 @@
     },
     
     { 
-        "menuCode" : 5,
+        "menuCode" : 45,
         "menuName" : "마운틴듀",
         "categoryName" : "drink",
         "isOrderable" : true,
@@ -60,7 +60,7 @@
     },
     
     { 
-        "menuCode" : 6,
+        "menuCode" : 46,
         "menuName" : "아메리카노",
         "categoryName" : "drink",
         "isOrderable" : true,
@@ -72,7 +72,7 @@
     },
     
     { 
-        "menuCode" : 7,
+        "menuCode" : 47,
         "menuName" : "아이스 아메리카노",
         "categoryName" : "drink",
         "isOrderable" : true,
@@ -84,7 +84,7 @@
     },
     
     { 
-        "menuCode" : 8,
+        "menuCode" : 48,
         "menuName" : "레몬에이드",
         "categoryName" : "drink",
         "isOrderable" : true,
@@ -96,7 +96,7 @@
     },
     
     { 
-        "menuCode" : 9,
+        "menuCode" : 49,
         "menuName" : "청포도에이드",
         "categoryName" : "drink",
         "isOrderable" : true,
@@ -108,7 +108,7 @@
     },
     
     { 
-        "menuCode" : 10,
+        "menuCode" : 50,
         "menuName" : "오렌지 주스",
         "categoryName" : "drink",
         "isOrderable" : true,

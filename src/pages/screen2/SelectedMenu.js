@@ -1,16 +1,39 @@
 import { Link, useParams } from 'react-router-dom';
 import itemStyle from './MenuItem.module.css';
+import { useState } from 'react';
 
-function SelectedMenu(){
+function SelectedMenu({menu, selected, setSelected}){
 
-    const {menuCode} = useParams();
+    const [quantity,setQuantity] = useState(1);
+
+    const onClickHandler = ()=>{
+        //remove
+    }
+    const onClickPlusHandler = ()=>{
+        setQuantity(quantity+1);
+        console.log(quantity);
+    }
+    const onClickMinusHandler = ()=>{
+        if(quantity > 1){
+            setQuantity(quantity-1);
+        } else {
+            onRemove(menu.menuCode);
+        }
+    }
+
+    const onRemove = menuCode => {
+        const changedSelected = selected.filter(menu => menu.menuCode !== menuCode);
+        setSelected(changedSelected);
+    }
+
     return(
-        <div style={{borderBottom:'1px solid'}}>
-            <div style={{textAlign:'center',lineHeight:'200px',height:'200px'}}>
-            </div>
-            <div style={{textAlign:'end',lineHeight:'30px'}}>
-                <Link to="/payment">주문하기</Link>
-            </div>
+        <div className={ itemStyle.MenuItem } onClick={onClickHandler}>
+            <img className={ itemStyle.ImgItem } src={menu.image}/>
+            <h3 className={ itemStyle.TextItem }>{menu.menuName}</h3>
+            <button onClick={onClickPlusHandler}>+</button>
+            {quantity}
+            <button onClick={onClickMinusHandler}>-</button>
+            <h3 className={ itemStyle.TextItem }>{menu.price}</h3>
         </div>
     );
 }

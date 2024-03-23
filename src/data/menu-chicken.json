@@ -1,6 +1,6 @@
 [
     { 
-        "menuCode" : 1,
+        "menuCode" : 21,
         "menuName" : "간장마늘 싸이순살",
         "categoryName" : "치킨",
         "isOrderable" : true,
@@ -11,7 +11,7 @@
         }
     },
     { 
-        "menuCode" : 2,
+        "menuCode" : 22,
         "menuName" : "꿀간장누룽지 싸이순살",
         "categoryName" : "치킨",
         "isOrderable" : true,
@@ -22,7 +22,7 @@
         }
     },
     { 
-        "menuCode" : 3,
+        "menuCode" : 23,
         "menuName" : "닭강정트리오",
         "categoryName" : "치킨",
         "isOrderable" : true,
@@ -33,7 +33,7 @@
         }
     },
     { 
-        "menuCode" : 4,
+        "menuCode" : 24,
         "menuName" : "반반치킨",
         "categoryName" : "치킨",
         "isOrderable" : true,
@@ -44,7 +44,7 @@
         }
     },
     { 
-        "menuCode" : 5,
+        "menuCode" : 25,
         "menuName" : "치즈뿌치(체다)",
         "categoryName" : "치킨",
         "isOrderable" : true,
@@ -55,7 +55,7 @@
         }
     },
     { 
-        "menuCode" : 6,
+        "menuCode" : 26,
         "menuName" : "치파오싸이순살",
         "categoryName" : "치킨",
         "isOrderable" : true,
@@ -66,7 +66,7 @@
         }
     },
     { 
-        "menuCode" : 7,
+        "menuCode" : 27,
         "menuName" : "케이준떡강정",
         "categoryName" : "치킨",
         "isOrderable" : true,
@@ -77,7 +77,7 @@
         }
     },
     { 
-        "menuCode" : 8,
+        "menuCode" : 28,
         "menuName" : "후라이드치킨",
         "categoryName" : "치킨",
         "isOrderable" : true,
@@ -88,7 +88,7 @@
         }
     },
     { 
-        "menuCode" : 9,
+        "menuCode" : 29,
         "menuName" : "맘스양념치킨",
         "categoryName" : "치킨",
         "isOrderable" : true,
@@ -99,7 +99,7 @@
         }
     },
     { 
-        "menuCode" : 10,
+        "menuCode" : 30,
         "menuName" : "후라이드 통다리(1조각)",
         "categoryName" : "치킨",
         "isOrderable" : true,
