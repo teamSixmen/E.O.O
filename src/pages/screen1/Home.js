@@ -1,7 +1,11 @@
 import { useState } from 'react';
 import {Link} from 'react-router-dom';
 
-function Home(){
+function Home({setIsTrue}){
+
+    const onClickIntoHandler = () => {
+        setIsTrue(true);
+    }
 
     return(
         <>
@@ -15,7 +19,7 @@ function Home(){
                     </div>
                 </Link>
                 <Link to='menu'>
-                    <div style={{backgroundColor:'orange',textAlign:'center',lineHeight:'200px',cursor:'pointer',border:'1px solid'}}>
+                    <div onClick={onClickIntoHandler} style={{backgroundColor:'orange',textAlign:'center',lineHeight:'200px',cursor:'pointer',border:'1px solid'}}>
                         매장
                     </div>
                 </Link>

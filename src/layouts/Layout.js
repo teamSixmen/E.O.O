@@ -2,10 +2,10 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { Outlet } from "react-router-dom";
 
-function Layout(){
+function Layout({isTrue, setIsTrue, setSelected, setTotalPrice}){
     return(
         <>
-            <Header/>
+            <Header isTrue={isTrue} setIsTrue={setIsTrue} setSelected={setSelected} setTotalPrice={setTotalPrice}/>
             <Outlet/>
             <Footer/>
         </>

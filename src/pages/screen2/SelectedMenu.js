@@ -30,10 +30,10 @@ function SelectedMenu({menu, selected, setSelected, totalPrice, setTotalPrice}){
         <div className={ itemStyle.MenuItem }>
             <img className={ itemStyle.ImgItem } src={menu.image}/>
             <h3 className={ itemStyle.TextItem }>{menu.menuName}</h3>
-            <button onClick={onClickPlus}>+</button>
+            <button onClick={ onClickPlus }>+</button>
             {quantity}
-            <button onClick={onClickMinus}>-</button>
-            <button onClick={onClickRemove} style={{backgroundColor:'red',borderRadius:'15px',border:'10px'}}>x</button>
+            <button onClick={ onClickMinus }>-</button>
+            <button onClick={ onClickRemove } style={{ backgroundColor:'red', borderRadius:'15px', border:'10px', cursor:'pointer' }}>x</button>
             <h3 className={ itemStyle.TextItem }>{menu.price*quantity}</h3>
             <h1></h1>
         </div>

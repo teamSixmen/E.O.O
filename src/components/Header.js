@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-function Header(){
-
-    const [isTrue,setIsTrue] = useState(false);
+function Header({isTrue, setIsTrue, setSelected, setTotalPrice}){
 
     const gotoStyle = {
         display:'inline-block',
@@ -17,12 +15,18 @@ function Header(){
         cursor:'pointer'
     };
 
-    const onClickGotoHanler = () =>{
+    const onClickGotoHandler = () =>{
         setIsTrue(false);
     }
     
-    const onClickIntoHanler = () =>{
+    const onClickIntoHandler = () =>{
         setIsTrue(true);
+    }
+
+    const onClickEdanHandler = () =>{
+        setIsTrue(false);
+        setSelected([]);
+        setTotalPrice(0);
     }
     
     useEffect(()=>{
@@ -32,15 +36,15 @@ function Header(){
     return(
         <>
             <div style={{textAlign:'end',borderBottom:'1px solid'}}>
-                <button onClick={onClickGotoHanler} style={gotoStyle}>
+                <button onClick={onClickGotoHandler} style={gotoStyle}>
                     포장
                 </button>
                 &nbsp;
-                <button onClick={onClickIntoHanler} style={intoStyle}>
+                <button onClick={onClickIntoHandler} style={intoStyle}>
                     매장
                 </button>
                 &nbsp;
-                <button style={{display:'inline-block',textDecorationLine:'none'}}>
+                <button onClick={onClickEdanHandler} style={{display:'inline-block',textDecorationLine:'none'}}>
                     <Link to='../'>처음으로</Link>
                 </button>
             </div>

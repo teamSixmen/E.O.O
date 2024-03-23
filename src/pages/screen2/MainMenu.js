@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Navigate, Outlet } from 'react-router-dom';
 
 import itemStyle from './MenuItem.module.css';
 
@@ -13,8 +13,7 @@ import SelectedMenu from './SelectedMenu';
 
 import MenuInfo from './MenuInfo';
 
-
-function MainMenu(){
+function MainMenu({selected, setSelected, totalPrice, setTotalPrice}){
 
     const [category,setcategory] = useState(1);
 
@@ -24,8 +23,7 @@ function MainMenu(){
     const [sideMenu,setSideMenu] = useState([]);
     const [drinkMenu,setDrinkMenu] = useState([]);
 
-    const [selected,setSelected] = useState([]);
-    const [totalPrice,setTotalPrice] = useState(0);
+    const [isSingle,setIsSingle] = useState(false);
 
     useEffect(()=>{
         if     (category === 1) setSingleMenu(getSingleMenu());
@@ -41,6 +39,10 @@ function MainMenu(){
         else if( e.target.name === 'chicken' ) setcategory(3);
         else if( e.target.name === 'side' ) setcategory(4);
         else if( e.target.name === 'drink' ) setcategory(5);
+    }
+
+    if(category===1 & isSingle){
+        return <Navigate to={`/menu/${selected.menuCode}`}/>
     }
 
     return(
@@ -65,11 +67,11 @@ function MainMenu(){
                 <button className={ itemStyle.TapStyle } name="drink" onClick={onClickHandler}>음료</button>
 
                 <div style={{backgroundColor:'blue',float:'right',width:'700px'}}>
-                    {category === 1 && singleMenu.map((menu)=><MenuInfo key={menu.menuCode} menu={menu} selected={selected} setSelected={setSelected} totalPrice={totalPrice} setTotalPrice={setTotalPrice}/>)}
-                    {category === 2 && setMenu.map((menu)=><MenuInfo key={menu.menuCode} menu={menu} selected={selected} setSelected={setSelected} totalPrice={totalPrice} setTotalPrice={setTotalPrice}/>)}
-                    {category === 3 && chickenMenu.map((menu)=><MenuInfo key={menu.menuCode} menu={menu} selected={selected} setSelected={setSelected} totalPrice={totalPrice} setTotalPrice={setTotalPrice}/>)}
-                    {category === 4 && sideMenu.map((menu)=><MenuInfo key={menu.menuCode} menu={menu} selected={selected} setSelected={setSelected} totalPrice={totalPrice} setTotalPrice={setTotalPrice}/>)}
-                    {category === 5 && drinkMenu.map((menu)=><MenuInfo key={menu.menuCode} menu={menu} selected={selected} setSelected={setSelected} totalPrice={totalPrice} setTotalPrice={setTotalPrice}/>)}
+                    {category === 1 && singleMenu.map((menu)=><MenuInfo key={menu.menuCode} menu={menu} category={category} isSingle={isSingle} setIsSingle={setIsSingle} selected={selected} setSelected={setSelected} totalPrice={totalPrice} setTotalPrice={setTotalPrice}/>)}
+                    {category === 2 && setMenu.map((menu)=><MenuInfo key={menu.menuCode} menu={menu} category={category} isSingle={isSingle} setIsSingle={setIsSingle} selected={selected} setSelected={setSelected} totalPrice={totalPrice} setTotalPrice={setTotalPrice}/>)}
+                    {category === 3 && chickenMenu.map((menu)=><MenuInfo key={menu.menuCode} menu={menu} category={category} isSingle={isSingle} setIsSingle={setIsSingle} selected={selected} setSelected={setSelected} totalPrice={totalPrice} setTotalPrice={setTotalPrice}/>)}
+                    {category === 4 && sideMenu.map((menu)=><MenuInfo key={menu.menuCode} menu={menu} category={category} isSingle={isSingle} setIsSingle={setIsSingle} selected={selected} setSelected={setSelected} totalPrice={totalPrice} setTotalPrice={setTotalPrice}/>)}
+                    {category === 5 && drinkMenu.map((menu)=><MenuInfo key={menu.menuCode} menu={menu} category={category} isSingle={isSingle} setIsSingle={setIsSingle} selected={selected} setSelected={setSelected} totalPrice={totalPrice} setTotalPrice={setTotalPrice}/>)}
                 </div>
             </div>
         </>
