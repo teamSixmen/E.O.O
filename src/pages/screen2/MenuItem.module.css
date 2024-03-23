@@ -13,3 +13,9 @@
 .TextItem {
     text-align: center;
 }
+
+.TapStyle {
+    margin: '3px';
+    display:'inline-block';
+    cursor:'pointer'
+};

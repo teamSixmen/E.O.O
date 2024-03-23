@@ -2,7 +2,6 @@ import {BrowserRouter,Routes,Route} from 'react-router-dom';
 import Home from './pages/screen1/Home';
 import Layout from './layouts/Layout';
 import MainMenu from './pages/screen2/MainMenu';
-import SelectedMenu from './pages/screen2/SelectedMenu';
 import AdditionalMenu from './pages/screen3/AdditionalMenu' ;
 import Payment from './pages/screen4/Payment';
 import Settlement from './pages/screen5/Settlement';

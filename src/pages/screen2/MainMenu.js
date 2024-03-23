@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 
+import itemStyle from './MenuItem.module.css';
+
 import { getSingleMenu } from '../../apis/menuAPI';
 import { getSetMenu } from '../../apis/menuAPI';
 import { getChickenMenu } from '../../apis/menuAPI';
@@ -14,12 +16,6 @@ import MenuInfo from './MenuInfo';
 
 function MainMenu(){
 
-    const tapStyle = {
-        margin: '3px',
-        display:'inline-block',
-        cursor:'pointer'
-    };
-
     const [category,setcategory] = useState(1);
 
     const [singleMenu,setSingleMenu] = useState([]);
@@ -29,7 +25,6 @@ function MainMenu(){
     const [drinkMenu,setDrinkMenu] = useState([]);
 
     const [selected,setSelected] = useState([]);
-
     const [totalPrice,setTotalPrice] = useState(0);
 
     useEffect(()=>{
@@ -56,16 +51,18 @@ function MainMenu(){
                         {selected.map((menu)=><SelectedMenu key={menu.menuCode} menu={menu} selected={selected} setSelected={setSelected} totalPrice={totalPrice} setTotalPrice={setTotalPrice}/>)}
                     </div>
                     <div style={{textAlign:'end',lineHeight:'30px'}}>
-                        {totalPrice}
-                        <Link to="/payment">주문하기</Link>
+                        {totalPrice}원
+                        <button>
+                            <Link to="/payment">주문하기</Link>
+                        </button>
                     </div>
                 </div>
 
-                <button name="single" onClick={onClickHandler} style={tapStyle}>단품</button>
-                <button name="set" onClick={onClickHandler} style={tapStyle}>세트</button>
-                <button name="chicken" onClick={onClickHandler} style={tapStyle}>치킨</button>
-                <button name="side" onClick={onClickHandler} style={tapStyle}>사이드</button>
-                <button name="drink" onClick={onClickHandler} style={tapStyle}>음료</button>
+                <button className={ itemStyle.TapStyle } name="single" onClick={onClickHandler}>단품</button>
+                <button className={ itemStyle.TapStyle } name="set" onClick={onClickHandler}>세트</button>
+                <button className={ itemStyle.TapStyle } name="chicken" onClick={onClickHandler}>치킨</button>
+                <button className={ itemStyle.TapStyle } name="side" onClick={onClickHandler}>사이드</button>
+                <button className={ itemStyle.TapStyle } name="drink" onClick={onClickHandler}>음료</button>
 
                 <div style={{backgroundColor:'blue',float:'right',width:'700px'}}>
                     {category === 1 && singleMenu.map((menu)=><MenuInfo key={menu.menuCode} menu={menu} selected={selected} setSelected={setSelected} totalPrice={totalPrice} setTotalPrice={setTotalPrice}/>)}
