@@ -6,7 +6,7 @@ import { getSideMenu } from '../../apis/menuAPI';
 
 import AdditionalMenuInfo from '../screen3/AdditionalMenuInfo';
 
-function AdditionalMenu({selected, setSelected, totalPrice, setTotalPrice}){
+function AdditionalMenu({selected, setSelected, selectedQuantity, setSelectedQuantity, totalPrice, setTotalPrice}){
 
     const [drink,setDrink] = useState([]);
     const [side,setSide] = useState([]);
@@ -16,17 +16,22 @@ function AdditionalMenu({selected, setSelected, totalPrice, setTotalPrice}){
         setSide(getSideMenu());
     },[]);
 
+    const onClickCancel = ()=>{
+        setSelected([]);
+        setTotalPrice(0);
+    }
+
     return(
         <>
             <div>
-                {drink.map((menu)=><AdditionalMenuInfo key={menu.menuCode} menu={menu} selected={selected} setSelected={setSelected} totalPrice={totalPrice} setTotalPrice={setTotalPrice}/>)}
+                {drink.map((menu)=><AdditionalMenuInfo key={menu.menuCode} menu={menu} selected={selected} setSelected={setSelected} selectedQuantity={selectedQuantity} setSelectedQuantity={setSelectedQuantity} totalPrice={totalPrice} setTotalPrice={setTotalPrice}/>)}
             </div>
             <div>
-                {side.map((menu)=><AdditionalMenuInfo key={menu.menuCode} menu={menu} selected={selected} setSelected={setSelected} totalPrice={totalPrice} setTotalPrice={setTotalPrice}/>)}
+                {side.map((menu)=><AdditionalMenuInfo key={menu.menuCode} menu={menu} selected={selected} setSelected={setSelected} selectedQuantity={selectedQuantity} setSelectedQuantity={setSelectedQuantity} totalPrice={totalPrice} setTotalPrice={setTotalPrice}/>)}
             </div>
             <div style={{textAlign:'center',lineHeight:'50px',borderTop:'1px solid'}}>
                 <Link to="/menu">추가하기</Link> | {" "}
-                <Link to="/menu">취소</Link>
+                <Link to="/menu" onClick={onClickCancel}>취소</Link>
             </div>
         </>
     );

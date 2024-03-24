@@ -2,17 +2,23 @@ import { Link, useParams } from 'react-router-dom';
 import itemStyle from './MenuItem.module.css';
 import { useEffect, useState } from 'react';
 
-function SelectedMenu({menu, selected, setSelected, totalPrice, setTotalPrice}){
+function SelectedMenu({menu, selected, setSelected, selectedQuantity, setSelectedQuantity, totalPrice, setTotalPrice}){
 
     const [quantity,setQuantity] = useState(1);
 
+    const findSelectedQuantity = selectedQuantity.findIndex(item => item.menuCode === menu.menuCode);
+    
     const onClickPlus = ()=>{
         setQuantity(quantity+1);
+        const changedSelectedQuantity = selectedQuantity.splice(findSelectedQuantity,1,{menuCode: menu.menuCode, quantity: quantity});
+        setSelectedQuantity(changedSelectedQuantity);
         setTotalPrice(totalPrice+menu.price);
     }
     const onClickMinus = ()=>{
         if(quantity > 1){
             setQuantity(quantity-1);
+            const changedSelectedQuantity = selectedQuantity.splice(findSelectedQuantity,1,{menuCode: menu.menuCode, quantity: quantity});
+            setSelectedQuantity(changedSelectedQuantity);
             setTotalPrice(totalPrice-menu.price);
         }
     }
@@ -23,8 +29,15 @@ function SelectedMenu({menu, selected, setSelected, totalPrice, setTotalPrice}){
     
     const onRemove = menuCode => {
         const changedSelected = selected.filter(item => item.menuCode !== menuCode);
+        const changedSelectedQuantity = selectedQuantity.filter(item => item.menuCode !== menuCode);
         setSelected(changedSelected);
+        setSelectedQuantity(changedSelectedQuantity);
     }
+
+    useEffect(()=>{
+        console.log(selected);
+        console.log(selectedQuantity);
+    })
 
     return(
         <div className={ itemStyle.MenuItem }>

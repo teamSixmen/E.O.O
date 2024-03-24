@@ -6,14 +6,23 @@ import AdditionalMenu from './pages/screen3/AdditionalMenu' ;
 import Payment from './pages/screen4/Payment';
 import Settlement from './pages/screen5/Settlement';
 import Finish from './pages/screen6/Finish';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
   // Home
   const [isTrue,setIsTrue] = useState(false);
   // MainMenu
   const [selected,setSelected] = useState([]);
+  const [selectedQuantity,setSelectedQuantity] = useState([]);
   const [totalPrice,setTotalPrice] = useState(0);
+
+  useEffect(()=>{
+    console.log(selected);
+  },[selected])
+  
+  useEffect(()=>{
+    console.log(selectedQuantity);
+  },[selectedQuantity])
 
   return (
     <div className="App">
@@ -23,13 +32,12 @@ function App() {
 
           <Route path='/' element={<Layout isTrue={isTrue} setIsTrue={setIsTrue} setSelected={setSelected} setTotalPrice={setTotalPrice}/>}>
             <Route path='menu'>
-              <Route index element={<MainMenu selected={selected} setSelected={setSelected} totalPrice={totalPrice} setTotalPrice={setTotalPrice}/>}/>
-              <Route path=':menuCode' element={<AdditionalMenu selected={selected} setSelected={setSelected} totalPrice={totalPrice} setTotalPrice={setTotalPrice}/>}/>
+              <Route index element={<MainMenu selected={selected} setSelected={setSelected} selectedQuantity={selectedQuantity} setSelectedQuantity={setSelectedQuantity} totalPrice={totalPrice} setTotalPrice={setTotalPrice}/>}/>
+              <Route path=':menuCode' element={<AdditionalMenu selected={selected} setSelected={setSelected} selectedQuantity={selectedQuantity} setSelectedQuantity={setSelectedQuantity} totalPrice={totalPrice} setTotalPrice={setTotalPrice}/>}/>
             </Route>
-            <Route path='payment' element={<Payment/>}/>
+            <Route path='payment' element={<Payment selected={selected} setSelected={setSelected} selectedQuantity={selectedQuantity} totalPrice={totalPrice} setTotalPrice={setTotalPrice}/>}/>
             <Route path='settlement' element={<Settlement/>}/>
             <Route path='goodbye' element={<Finish/>}/>
-
           </Route>
 
         </Routes>

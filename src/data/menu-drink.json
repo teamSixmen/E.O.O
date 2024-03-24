@@ -1,5 +1,16 @@
 [
     { 
+        "menuCode" : 0,
+        "menuName" : "선택 안함",
+        "categoryName" : "drink",
+        "isOrderable" : true,
+        "price" : 0,
+        "detail" : {
+            "description" : "가슴까지 시원한 콜라 한 잔! 효정's Touch 메뉴와 함께하세요!",
+            "image" : "/images/drink/.png"
+        }
+    },
+    { 
         "menuCode" : 41,
         "menuName" : "콜라",
         "categoryName" : "drink",
